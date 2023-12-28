@@ -50,7 +50,7 @@ C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\button.hp
 C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\button.hpp(11,19): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\rockpaperscissors.hpp(85,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\rockpaperscissors.hpp(135,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
   (compiling source file 'main.cpp')
   
 C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\tictactoe.hpp(49,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
@@ -86,12 +86,6 @@ C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(77,67): 
 C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(77,67): warning C4244:         [
 C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(77,67): warning C4244:             T=float
 C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(77,67): warning C4244:         ]
-  tictactoe.cpp
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\tictactoe.hpp(49,29): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  (compiling source file 'source/tictactoe.cpp')
-  
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\source\tictactoe.cpp(38,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  Generating Code...
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\rockpaperscissors.hpp(83): warning C4715: 'RockPaperScissors::play': not all control paths return a value
 C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\collisions.hpp(26): warning C4715: 'Collisions::collidesWithBorder': not all control paths return a value
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\rockpaperscissors.hpp(133): warning C4715: 'RockPaperScissors::play': not all control paths return a value
   Traveler's_Shadow.vcxproj -> C:\Users\Kuba\source\repos\Traveler's_Shadow\x64\Debug\Traveler's_Shadow.exe

@@ -83,7 +83,7 @@ bool TicTacToe::hasWon(int player) {
 	else if (squareState[2] == player && squareState[2] == squareState[4] && squareState[2] == squareState[6]) return true;
 	else return false;
 }
-void TicTacToe::play(sf::RenderWindow& window) {
+void TicTacToe::play(sf::RenderWindow& window, bool& w) {
 		if (!hasAnyoneWon) {
 		bool isAnySquareEmpty = true;
 		placeSquares(window);
@@ -129,4 +129,5 @@ void TicTacToe::play(sf::RenderWindow& window) {
 	window.draw(winText);
 	if (hasAnyoneWon) window.draw(exitText);
 	draw(window);
+	if(hasPlayerWon) w = false;
 }

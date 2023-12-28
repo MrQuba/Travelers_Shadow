@@ -61,7 +61,7 @@ int main() {
                 hasJustEntered = false;
                 player->sprite.setPosition(0 + (player->sprite.getLocalBounds().width * player->sprite.getScale().x), player->sprite.getPosition().y);
             }
-            if (isPlaying) tictactoe.play(game.window);
+            if (isPlaying) tictactoe.play(game.window, isPlaying);
             if (playerSprite.collidesWithBorder(player->sprite, game.window.getSize().x - (player->sprite.getLocalBounds().width * player->sprite.getScale().x), false) && tictactoe.hasPlayerWon) { player->currentSector = player->isInBossRoom; hasJustEntered = true; break; }
             break;
         case player->isInRockPaperScissorsRoom:
@@ -72,9 +72,9 @@ int main() {
                 player->sprite.setPosition(game.window.getSize().x - (player->sprite.getLocalBounds().width * player->sprite.getScale().x), player->sprite.getPosition().y);
             }
             if (isPlaying) {
-                if (rockpaperscissors.play(game.window) == rockpaperscissors.Win) isPlaying = false;
+                if (rockpaperscissors.play(game.window) == rockpaperscissors.Win) rockpaperscissors.hasPlayerWon = true;
             }
-            if (playerSprite.collidesWithBorder(player->sprite, 0 + (player->sprite.getLocalBounds().width * player->sprite.getScale().x), true)) { player->currentSector = player->isInBossRoom; hasJustEntered = true; break; }
+            if (playerSprite.collidesWithBorder(player->sprite, 0 + (player->sprite.getLocalBounds().width * player->sprite.getScale().x), true) && rockpaperscissors.hasPlayerWon) { player->currentSector = player->isInBossRoom; hasJustEntered = true; break; }
             break;
         case player->isInBossRoom:
             game.window.clear(sf::Color::Yellow);

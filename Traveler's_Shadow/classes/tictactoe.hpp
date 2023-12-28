@@ -7,7 +7,7 @@ public:
 		isCircle = 10,
 		isCross = 11
 	};
-	void play(sf::RenderWindow& window);
+	void play(sf::RenderWindow& window, bool& w);
 	TicTacToe() {
 		for (int i = 0; i < amountOfSquares; i++) {
 			squareState[i] = isEmpty;
