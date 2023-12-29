@@ -56,7 +56,7 @@ public:
 	}
 	Math calculate;
 	Collisions player;
-	Input input{this->jumpHeight};
+	Input input;
 
 	int groundLevel;
 	float mass;
@@ -64,10 +64,12 @@ public:
 
 	void specificUpdate(sf::RenderWindow& window) override {
 		velocity = input.movementManager(1, this->sprite, window);
-		if(!input.isJumping)this->velocity.y = input.fallFaster(calculate.fallVelocity(this->gravity, this->mass));
 		if (this->velocity.y >= 72) this->velocity.y = 72;
 		this->sprite.move(velocity);
-		if (player.collidesWithGround(this->sprite, groundLevel)) input.canJump = true;
+		if (player.collidesWithGround(this->sprite, groundLevel)) {
+			input.canJump = true;
+			input.isJumping = false;
+		}
 		player.collidesWithBorder(this->sprite, 0, true);
 		player.collidesWithBorder(this->sprite, window.getSize().x - (this->sprite.getLocalBounds().width * this->sprite.getScale().x), false);
 	}

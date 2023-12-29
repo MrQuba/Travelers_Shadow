@@ -105,10 +105,12 @@ void TicTacToe::play(sf::RenderWindow& window, bool& w) {
 			winText.setString(playerWins);
 			hasAnyoneWon = true;
 			hasPlayerPlayed = true;
+			hasPlayerWon = true;
 		}
 		else if (hasWon(isCross)) {
 			winText.setString(computerWins);
 			hasAnyoneWon = true;
+			hasPlayerLost = true;
 		}
 		else {
 			for (int i = 0; i < amountOfSquares; i++) {
@@ -121,13 +123,43 @@ void TicTacToe::play(sf::RenderWindow& window, bool& w) {
 			if (!isAnySquareEmpty) {
 				winText.setString(aDraw);
 				hasAnyoneWon = true;
+				hasPlayerLost = true;
 			}
 		}
 		window.draw(turnText);
 }
+
+
+
+
 	window.draw(titleText);
 	window.draw(winText);
 	if (hasAnyoneWon) window.draw(exitText);
 	draw(window);
+	bool restart = false;
 	if(hasPlayerWon) w = false;
+	int temp = 0;
+	if (hasPlayerLost) {
+		temp++;
+		window.draw(exitText);
+	}
+	bool startLoop = false;
+	if (temp == 2) startLoop = true;
+	while (hasPlayerLost && startLoop) {
+		std::cout << "L" << std::endl;
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
+			hasPlayerLost = false;
+			hasAnyoneWon = false;
+			restart = true;
+			temp = 0;
+		}
+
+	}
+	if (restart) {
+		restart = false;
+		for (int i = 0; i < amountOfSquares; i++) {
+			squareState[i] = isEmpty;
+			square[i].setFillColor(sf::Color::Green);
+		}
+	}
 }

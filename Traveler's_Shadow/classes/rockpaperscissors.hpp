@@ -39,7 +39,6 @@ public:
 		hasPlayerWon = false;
 	}
 
-
 	int played = Nothing;
 	int computerPlayed = Nothing;
 	sf::RectangleShape displayComputerPlayed;
@@ -62,74 +61,76 @@ public:
 		paper.button.setPosition(3 * paper.button.getLocalBounds().width, window.getSize().y - paper.button.getLocalBounds().height);
 		scissors.button.setPosition(5 * scissors.button.getLocalBounds().width, window.getSize().y - scissors.button.getLocalBounds().height);
 		
-		if (rock.doesContainMouseCursor(window) && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-			played = Rock;
-		}
-		else if (paper.doesContainMouseCursor(window) && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-			played = Paper;
-		}
-		else if (scissors.doesContainMouseCursor(window) && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-			played = Rock;
-		}
-		else {
-			played = Nothing;
-		}
-		if (played != Nothing) {
-			computerPlayed = ai();
-			switch (computerPlayed)
-			{
-			case Rock:
-				this->texture.loadFromFile("assets/buttons/rockButton.png");
-				break;
-			case Paper:
-				this->texture.loadFromFile("assets/buttons/paperButton.png");
-				break;
-			case Scissors:
-				this->texture.loadFromFile("assets/buttons/scissorsButton.png");
-				break;
+		if (!hasPlayerWon) {
+			if (rock.doesContainMouseCursor(window) && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+				played = Rock;
 			}
-			if (played == computerPlayed) {
-				winText.setString(aDraw);
-				return Tie;
+			else if (paper.doesContainMouseCursor(window) && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+				played = Paper;
 			}
-			switch (played) {
-			case Rock:
-				if (computerPlayed == Paper) {
-					winText.setString(computerWins);
-					return Loss;
-				}
-				else {
-					winText.setString(playerWins);
-					return Win;
-				}
-				break;
-			case Paper:
-				if (computerPlayed == Scissors) {
-					winText.setString(computerWins);
-					return Loss;
-				}
-				else {
-					winText.setString(playerWins);
-					return Win;
-				}
-				break;
-			case Scissors:
-				if (computerPlayed == Rock) {
-					winText.setString(computerWins);
-					return Loss;
-				}
-				else {
-					winText.setString(playerWins);
-					return Win;
-				};
-				break;
-			default: return Error;
+			else if (scissors.doesContainMouseCursor(window) && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+				played = Rock;
 			}
-		}
-		this->displayComputerPlayed.setTexture(&this->texture);
+			else {
+				played = Nothing;
+			}
+			if (played != Nothing) {
+				computerPlayed = ai();
+				switch (computerPlayed)
+				{
+				case Rock:
+					this->texture.loadFromFile("assets/buttons/rockButton.png");
+					break;
+				case Paper:
+					this->texture.loadFromFile("assets/buttons/paperButton.png");
+					break;
+				case Scissors:
+					this->texture.loadFromFile("assets/buttons/scissorsButton.png");
+					break;
+				}
+				if (played == computerPlayed) {
+					winText.setString(aDraw);
+					return Tie;
+				}
+				switch (played) {
+				case Rock:
+					if (computerPlayed == Paper) {
+						winText.setString(computerWins);
+						return Loss;
+					}
+					else {
+						winText.setString(playerWins);
+						return Win;
+					}
+					break;
+				case Paper:
+					if (computerPlayed == Scissors) {
+						winText.setString(computerWins);
+						return Loss;
+					}
+					else {
+						winText.setString(playerWins);
+						return Win;
+					}
+					break;
+				case Scissors:
+					if (computerPlayed == Rock) {
+						winText.setString(computerWins);
+						return Loss;
+					}
+					else {
+						winText.setString(playerWins);
+						return Win;
+					};
+					break;
+				default: return Error;
+				}
+			}
+			this->displayComputerPlayed.setTexture(&this->texture);
 
 
 		draw(window, rock.button, paper.button, scissors.button, this->displayComputerPlayed);
+		}
 	}
 	int ai() {
 		srand(time(NULL));

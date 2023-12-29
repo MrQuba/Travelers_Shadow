@@ -41,7 +41,7 @@ public:
 		exitText.setCharacterSize(32);
 		exitText.setFillColor(sf::Color::White);
 		exitText.setPosition(5 * square[0].getLocalBounds().width, 3 * square[0].getLocalBounds().height);
-		exitText.setString(exit);
+		exitText.setString("Press 'R' to restart");
 
 		titleText.setFont(font);
 		titleText.setCharacterSize(96);
@@ -51,6 +51,7 @@ public:
 
 		hasAnyoneWon = false;
 		hasPlayerWon = false;
+		hasPlayerLost = false;
 	}
 	bool hasPlayerWon;
 private:
@@ -65,6 +66,7 @@ private:
 	int squareState[amountOfSquares];
 	bool hasPlayerPlayed;
 	bool hasAnyoneWon;
+	bool hasPlayerLost;
 
 	std::string playerTurn;
 	std::string computerTurn;
