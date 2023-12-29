@@ -3,6 +3,7 @@
 #include "math.hpp"
 #include "input.hpp"
 #include "collisions.hpp"
+#include "animation.hpp"
 
 class Entity {
 public:
@@ -35,7 +36,6 @@ public:
 			if (this->health <= 0) this->isAlive = false;
 
 			specificUpdate(window);
-
 			window.draw(this->sprite);
 			return true;
 		}
@@ -52,18 +52,22 @@ public:
 		mass = 75;
 		groundLevel = 650;
 		health = 255;
+		directionOld = input.Left;
 
 	}
 	Math calculate;
 	Collisions player;
 	Input input;
-
+	Animation animation{ 25 ,"assets/graphics/entities/playerSprite.png" , 16, 16, 0, 0};
 	int groundLevel;
 	float mass;
+	int directionOld;
 
 
 	void specificUpdate(sf::RenderWindow& window) override {
+		directionOld = input.direction;
 		velocity = input.movementManager(1, this->sprite, window);
+		if (directionOld != input.direction) this->sprite.scale(-1, 1);
 		if (this->velocity.y >= 72) this->velocity.y = 72;
 		this->sprite.move(velocity);
 		if (player.collidesWithGround(this->sprite, groundLevel)) {
@@ -72,5 +76,10 @@ public:
 		}
 		player.collidesWithBorder(this->sprite, 0, true);
 		player.collidesWithBorder(this->sprite, window.getSize().x - (this->sprite.getLocalBounds().width * this->sprite.getScale().x), false);
+		if (input.isMoving) {
+			std::cout << input.isMoving << std::endl;
+			animation.animate(this->sprite);
+		}
+		else this->sprite.setTexture(this->texture);
 	}
 };

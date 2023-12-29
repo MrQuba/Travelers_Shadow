@@ -77,7 +77,8 @@ public:
 		}
 		if (this->velocity.x > 0 && this->direction == Left) this->velocity.x *= -1;
 		if (this->velocity.x < 0 && this->direction == Right) this->velocity.x *= -1;
-		if (this->velocity.x == 0) this->isMoving = false;
+		if (this->velocity.x == 0) isMoving = false;
+		if (0 != this->velocity.x) isMoving = true;
 		return velocity;
 	}
 };
