@@ -31,9 +31,11 @@ int main() {
     Collisions playerSprite;
     Window game(1280, 720, "Traveller's Shadow");
     Entity* player = new Player("assets/graphics/entities/playerSprite.png", 16, 0, 16, 16, 4);
+    Entity* boss = new Boss("assets/graphics/entities/bossSprite.png", 0, 0, 23, 45, 4);
     Entity startingRoomBackground("assets/graphics/backgrounds/startingRoom.png", 0, 0, 192, 108, 6.66666666667);
     Entity tictactoeRoomBackground("assets/graphics/backgrounds/tictactoeRoom.png", 0, 0, 192, 108, 6.66666666667);
     Entity rockpaperscissorsBackground("assets/graphics/backgrounds/rockpaperscissorsRoom.png", 0, 0, 192, 108, 6.66666666667);
+    Entity bossBackground("assets/graphics/backgrounds/bossRoom.png", 0, 0, 1920, 1080, 0.66666666666);
     TicTacToe tictactoe;
     sf::Event event;
 
@@ -77,7 +79,19 @@ int main() {
             if (playerSprite.collidesWithBorder(player->sprite, 0 + (player->sprite.getLocalBounds().width * player->sprite.getScale().x), true) && rockpaperscissors.hasPlayerWon) { player->currentSector = player->isInBossRoom; hasJustEntered = true; break; }
             break;
         case player->isInBossRoom:
-            game.window.clear(sf::Color::Yellow);
+            if (hasJustEntered) {
+                hasJustEntered = false;
+                player->sprite.setPosition(game.window.getSize().x / 2, player->sprite.getPosition().y);
+            }
+            boss->sprite.setPosition(game.window.getSize().x / 2, boss->sprite.getLocalBounds().height);
+
+            if (playerSprite.collidesWithBorder(player->sprite, 0 + (player->sprite.getLocalBounds().width * player->sprite.getScale().x), true))
+                player->sprite.setPosition(game.window.getSize().x - (player->sprite.getLocalBounds().width * player->sprite.getScale().x), player->sprite.getPosition().y);
+            if (playerSprite.collidesWithBorder(player->sprite, game.window.getSize().x - (player->sprite.getLocalBounds().width * player->sprite.getScale().x), false))
+                player->sprite.setPosition(player->sprite.getLocalBounds().width * player->sprite.getScale().x, player->sprite.getPosition().y);
+
+            game.window.draw(bossBackground.sprite);
+            boss->update(game.window);
             break;
         default:
             std::cout << "Something went wrong. There is no such sector" << std::endl;

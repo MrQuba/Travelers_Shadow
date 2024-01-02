@@ -11,20 +11,23 @@ C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\math.hpp(
 C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\input.hpp(12,11): warning C4552: '-': result of expression not used
   (compiling source file 'main.cpp')
   
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\input.hpp(63,12): warning C4305: 'return': truncation from 'double' to 'float'
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\input.hpp(65,12): warning C4305: 'return': truncation from 'double' to 'float'
   (compiling source file 'main.cpp')
   
 C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\entity.hpp(16,24): warning C4305: 'initializing': truncation from 'double' to 'const float'
   (compiling source file 'main.cpp')
   
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\entity.hpp(50,153): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\entity.hpp(48,153): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\entity.hpp(78,62): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\entity.hpp(78,62): warning C4244:         with
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\entity.hpp(78,62): warning C4244:         [
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\entity.hpp(78,62): warning C4244:             T=float
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\entity.hpp(78,62): warning C4244:         ]
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\entity.hpp(74,62): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\entity.hpp(74,62): warning C4244:         with
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\entity.hpp(74,62): warning C4244:         [
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\entity.hpp(74,62): warning C4244:             T=float
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\entity.hpp(74,62): warning C4244:         ]
+  (compiling source file 'main.cpp')
+  
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\entity.hpp(83,151): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
   (compiling source file 'main.cpp')
   
 C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\button.hpp(9,38): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
@@ -55,35 +58,56 @@ C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\tictactoe
   
 C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(21,24): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(22,22): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(34,99): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(35,101): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(36,113): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(49,94): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(49,94): warning C4244:         with
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(49,94): warning C4244:         [
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(49,94): warning C4244:             T=unsigned int
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(49,94): warning C4244:         ]
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(49,68): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(49,68): warning C4244:         with
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(49,68): warning C4244:         [
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(49,68): warning C4244:             T=unsigned int
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(49,68): warning C4244:         ]
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(55,94): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(55,94): warning C4244:         with
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(55,94): warning C4244:         [
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(55,94): warning C4244:             T=float
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(55,94): warning C4244:         ]
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(65,89): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(65,89): warning C4244:         with
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(65,89): warning C4244:         [
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(65,89): warning C4244:             T=float
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(65,89): warning C4244:         ]
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(77,67): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(77,67): warning C4244:         with
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(77,67): warning C4244:         [
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(77,67): warning C4244:             T=float
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(77,67): warning C4244:         ]
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(35,99): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(36,101): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(37,113): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(38,89): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(51,94): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(51,94): warning C4244:         with
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(51,94): warning C4244:         [
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(51,94): warning C4244:             T=unsigned int
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(51,94): warning C4244:         ]
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(51,68): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(51,68): warning C4244:         with
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(51,68): warning C4244:         [
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(51,68): warning C4244:             T=unsigned int
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(51,68): warning C4244:         ]
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(57,94): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(57,94): warning C4244:         with
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(57,94): warning C4244:         [
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(57,94): warning C4244:             T=float
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(57,94): warning C4244:         ]
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(67,89): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(67,89): warning C4244:         with
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(67,89): warning C4244:         [
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(67,89): warning C4244:             T=float
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(67,89): warning C4244:         ]
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(79,67): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(79,67): warning C4244:         with
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(79,67): warning C4244:         [
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(79,67): warning C4244:             T=float
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(79,67): warning C4244:         ]
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(84,68): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(84,68): warning C4244:         with
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(84,68): warning C4244:         [
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(84,68): warning C4244:             T=unsigned int
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(84,68): warning C4244:         ]
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(86,62): warning C4244: 'argument': conversion from 'T' to 'float', possible loss of data
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(86,62): warning C4244:         with
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(86,62): warning C4244:         [
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(86,62): warning C4244:             T=unsigned int
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(86,62): warning C4244:         ]
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(88,67): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(88,67): warning C4244:         with
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(88,67): warning C4244:         [
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(88,67): warning C4244:             T=float
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(88,67): warning C4244:         ]
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(90,89): warning C4244: 'argument': conversion from 'T' to 'int', possible loss of data
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(90,89): warning C4244:         with
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(90,89): warning C4244:         [
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(90,89): warning C4244:             T=float
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\main.cpp(90,89): warning C4244:         ]
 C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\collisions.hpp(26): warning C4715: 'Collisions::collidesWithBorder': not all control paths return a value
 C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\rockpaperscissors.hpp(134): warning C4715: 'RockPaperScissors::play': not all control paths return a value
-C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\animation.hpp(38): warning C4715: 'Animation::animate': not all control paths return a value
+C:\Users\Kuba\source\repos\Traveler's_Shadow\Traveler's_Shadow\classes\animation.hpp(36): warning C4715: 'Animation::animate': not all control paths return a value
   Traveler's_Shadow.vcxproj -> C:\Users\Kuba\source\repos\Traveler's_Shadow\x64\Debug\Traveler's_Shadow.exe

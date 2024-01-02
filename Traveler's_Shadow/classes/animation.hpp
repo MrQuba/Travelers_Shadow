@@ -3,11 +3,10 @@
 class Animation {
 public:
 	Animation(int interval, std::string path, int sizeX, int sizeY, int startX, int startY) {
-		texture.loadFromFile(path, sf::IntRect(startX, startY, sizeX, sizeY));
 		this->interval = interval;
 		this->sizeX = sizeX;
 		this->sizeY = sizeY;
-		this->startX = 0;
+		this->startX = 16;
 		this->startY = 0;
 		this->path = path;
 		count = 0;
@@ -28,9 +27,8 @@ public:
 			else if (count == this->interval) {
 				frame++;
 				count = 0;
-				std::cout << "Frame: " << frame << std::endl
-					<< "Start X: " << startX * frame << " Start Y: " << startY << std::endl;
-				texture.loadFromFile(this->path, sf::IntRect(sizeX * frame, startY, sizeX, sizeY));
+
+				texture.loadFromFile(this->path, sf::IntRect(startX * frame, 0, 16, 16));
 				sprite.setTexture(texture);
 			}
 		}

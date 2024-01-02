@@ -7,7 +7,7 @@ public:
 	Input() {
 		isMoving = false;
 		isJumping = false;
-		speed = 2.5;
+		speed = 2;
 		direction = None;
 		canJump - true;
 		isFacing = None;
@@ -41,6 +41,7 @@ public:
 	float moveLeft(float speed) {
 		float velocityX = 0;
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+			direction = Left;
 			isFacing = Left;
 			velocityX = speed;
 			return -velocityX;
@@ -50,6 +51,7 @@ public:
 	float moveRight(float speed) {
 		float velocityX = 0;
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+			direction = Right;
 			isFacing = Right;
 			velocityX = speed;
 			return velocityX;

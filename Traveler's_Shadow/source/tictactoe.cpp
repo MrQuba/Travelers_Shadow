@@ -146,7 +146,6 @@ void TicTacToe::play(sf::RenderWindow& window, bool& w) {
 	bool startLoop = false;
 	if (temp == 2) startLoop = true;
 	while (hasPlayerLost && startLoop) {
-		std::cout << "L" << std::endl;
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
 			hasPlayerLost = false;
 			hasAnyoneWon = false;
