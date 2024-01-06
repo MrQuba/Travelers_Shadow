@@ -2,6 +2,8 @@
 #include "classes/math.hpp"
 #include "classes/window.hpp"
 #include "classes/entity.hpp"
+#include "classes/player.hpp"
+#include "classes/boss.hpp"
 #include "classes/collisions.hpp"
 #include "classes/rockpaperscissors.hpp"
 #include "classes/tictactoe.hpp"

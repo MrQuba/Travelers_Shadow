@@ -134,15 +134,20 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="source\boss.cpp" />
+    <ClCompile Include="source\player.cpp" />
     <ClCompile Include="source\tictactoe.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="classes\animation.hpp" />
+    <ClInclude Include="classes\boss.hpp" />
     <ClInclude Include="classes\button.hpp" />
     <ClInclude Include="classes\collisions.hpp" />
     <ClInclude Include="classes\entity.hpp" />
+    <ClInclude Include="classes\healthbars.hpp" />
     <ClInclude Include="classes\input.hpp" />
     <ClInclude Include="classes\math.hpp" />
+    <ClInclude Include="classes\player.hpp" />
     <ClInclude Include="classes\rockpaperscissors.hpp" />
     <ClInclude Include="classes\window.hpp" />
   </ItemGroup>
