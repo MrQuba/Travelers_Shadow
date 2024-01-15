@@ -8,7 +8,7 @@ public:
 		isMoving = false;
 		isJumping = false;
 		speed = 2;
-		direction = None;
+		direction = Left;
 		canJump - true;
 		isFacing = None;
 		dashCooldown = 0;

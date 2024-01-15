@@ -6,10 +6,16 @@ public:
 		groundLevel = 650;
 		health = 255;
 		directionOld = input.Left;
+		sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
 
 		isAttacking = false;
 		angle = 0;
 		createSword();
+
+
+		isShot = false;
+		isAvalible = true;
+
 	}
 	Math calculate;
 	Collisions player;
@@ -30,9 +36,15 @@ public:
 	sf::Texture swordTexture;
 	sf::Sprite swordSprite;
 
-	bool isAttacking;
-	bool attack();
+	void shootMissle(sf::Sprite& projectile);
+	sf::Sprite missle;
+	sf::Texture missleTexture;
+	bool isShot;
+	bool isAvalible;
+;
+	bool attack(sf::RenderWindow& window);
 	int angle;
+	bool isAttacking;
 
 	void specificUpdate(sf::RenderWindow& window) override {
 		flipSprite(window);
@@ -44,8 +56,10 @@ public:
 		borderCollisions(window);
 
 		isMoving();
-		attack();
+		attack(window); 
 		if(isAttacking)
 		window.draw(swordSprite);
+		if (isShot) {
+		}
 	}
 };
