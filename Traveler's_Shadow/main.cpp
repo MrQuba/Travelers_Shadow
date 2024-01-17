@@ -10,7 +10,6 @@
 #include <iostream>
 #include <cmath>
 
-
 void eventLoop(sf::RenderWindow& window, sf::Event& event) {
     while (window.pollEvent(event)) {
         if (event.type == sf::Event::Closed) window.close();
@@ -34,6 +33,7 @@ int main() {
     Window game(1280, 720, "Traveller's Shadow");
     Entity* player = new Player("assets/graphics/entities/playerSprite.png", 16, 0, 16, 16, 4);
     Entity* boss = new Boss("assets/graphics/entities/bossSprite.png", 0, 0, 23, 45, 4);
+    Player pc;
     Entity startingRoomBackground("assets/graphics/backgrounds/startingRoom.png", 0, 0, 192, 108, 6.66666666667);
     Entity tictactoeRoomBackground("assets/graphics/backgrounds/tictactoeRoom.png", 0, 0, 192, 108, 6.66666666667);
     Entity rockpaperscissorsBackground("assets/graphics/backgrounds/rockpaperscissorsRoom.png", 0, 0, 192, 108, 6.66666666667);
@@ -84,16 +84,23 @@ int main() {
             if (hasJustEntered) {
                 hasJustEntered = false;
                 player->sprite.setPosition(game.window.getSize().x / 2, player->sprite.getPosition().y);
+                boss->sprite.setPosition(game.window.getSize().x / 2, boss->sprite.getLocalBounds().height);
             }
-            boss->sprite.setPosition(game.window.getSize().x / 2, boss->sprite.getLocalBounds().height);
-
+            if (boss->isAlive) {
+                boss->health -= player->hitBoss(boss->sprite);
+                boss->health -= player->hitBossMelee(boss->sprite);
+                player->health -= player->hitByBoss(boss->sprite);
+            }
             if (playerSprite.collidesWithBorder(player->sprite, 0 + (player->sprite.getLocalBounds().width * player->sprite.getScale().x), true))
                 player->sprite.setPosition(game.window.getSize().x - (player->sprite.getLocalBounds().width * player->sprite.getScale().x), player->sprite.getPosition().y);
             if (playerSprite.collidesWithBorder(player->sprite, game.window.getSize().x - (player->sprite.getLocalBounds().width * player->sprite.getScale().x), false))
                 player->sprite.setPosition(player->sprite.getLocalBounds().width * player->sprite.getScale().x, player->sprite.getPosition().y);
 
             game.window.draw(bossBackground.sprite);
-            boss->update(game.window);
+            if (boss->isAlive) {
+                boss->update(game.window);
+            }
+            if (!boss->isAlive) std::cout << "You win!";
             break;
         default:
             std::cout << "Something went wrong. There is no such sector" << std::endl;
@@ -104,6 +111,6 @@ int main() {
         game.window.display();
     }
     delete player;
-
+    delete boss;
     return 0;
 }

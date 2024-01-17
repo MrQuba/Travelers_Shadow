@@ -69,7 +69,7 @@ public:
 				played = Paper;
 			}
 			else if (scissors.doesContainMouseCursor(window) && sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-				played = Rock;
+				played = Scissors;
 			}
 			else {
 				played = Nothing;

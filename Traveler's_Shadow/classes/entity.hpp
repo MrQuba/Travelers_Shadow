@@ -14,9 +14,8 @@ public:
 		isInRockPaperScissorsRoom = 11,
 		isInBossRoom = 100
 	};
-	float const gravity = 9.81;
 
-	Entity(std::string pathToTexture, int startX, int startY, int sizeX, int sizeY, float scale) {
+	Entity(std::string pathToTexture = "", int startX = 0, int startY = 0, int sizeX = 0, int sizeY = 0, float scale = 1) {
 		texture.loadFromFile(pathToTexture, sf::IntRect(startX, startY, sizeX, sizeY));
 		sprite.setTexture(texture);
 		sprite.scale(scale, scale);
@@ -24,23 +23,40 @@ public:
 		isAlive = true;
 		currentSector = isInStartingRoom;
 	}
+		~Entity(){}
+
 	sf::Sprite sprite;
 	sf::Texture texture;
-	float jumpHeight;
-	bool isAlive;
 	int health;
+	float const gravity = 9.81;
+	float jumpHeight;
+
+	bool isAlive;
+
 	int currentSector;
+
 	sf::Vector2f velocity;
-	 bool update(sf::RenderWindow& window) {
-		if (!this->isAlive) return false;
-			if (this->health <= 0) this->isAlive = false;
-
-			specificUpdate(window);
-			window.draw(this->sprite);
-			return true;
+	virtual int hitBoss(sf::Sprite& sprt) {
+		std::cout << "to override";
+			return 0;
 	}
-	 virtual void specificUpdate(sf::RenderWindow& window) {
-		 std::cout << "entity" << std::endl;
+	virtual int hitBossMelee(sf::Sprite& sprt) {
+		std::cout << "to override";
+		return 0;
+	}
+	virtual int hitByBoss(sf::Sprite& sprt) {
+		std::cout << "to override";
+		return 0;
+	}
+	bool update(sf::RenderWindow& window) {
+		if (!this->isAlive) return false;
+		if (this->health <= 0) this->isAlive = false;
 
-	 }
+		specificUpdate(window);
+		window.draw(this->sprite);
+		return true;
+	}
+	virtual void specificUpdate(sf::RenderWindow& window) {
+		std::cout << "entity" << std::endl;
+	}
 };

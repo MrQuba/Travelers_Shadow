@@ -27,8 +27,10 @@ public:
 			else if (count == this->interval) {
 				frame++;
 				count = 0;
+				float start = startX * frame;
+				if (64 == start) start = 48;
 
-				texture.loadFromFile(this->path, sf::IntRect(startX * frame, 0, 16, 16));
+				texture.loadFromFile(this->path, sf::IntRect(start, 0, 16, 16));
 				sprite.setTexture(texture);
 			}
 		}

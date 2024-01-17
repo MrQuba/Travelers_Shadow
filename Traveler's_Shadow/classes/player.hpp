@@ -1,7 +1,7 @@
 #include "entity.hpp"
 class Player : public Entity {
 public:
-	Player(std::string pathToTexture, int startX, int startY, int sizeX, int sizeY, const int scale) : Entity(pathToTexture, startX, startY, sizeX, sizeY, scale) {
+	Player(std::string pathToTexture = "", int startX = 0, int startY = 0, int sizeX = 0, int sizeY = 0, const int scale = 1) : Entity(pathToTexture, startX, startY, sizeX, sizeY, scale) {
 		this->jumpHeight = 600;
 		groundLevel = 650;
 		health = 255;
@@ -13,14 +13,18 @@ public:
 		createSword();
 
 
+
 		isShot = false;
 		isAvalible = true;
 
 	}
 	Math calculate;
 	Collisions player;
+	Collisions shotMissle;
+	Collisions swordSwing;
 	Input input;
 	Animation animation{ 25 ,"assets/graphics/entities/playerSprite.png" , 16, 16, 0, 0 };
+	Entity missle{"assets/graphics/entities/playerProjectile.png", 0, 0, 16, 16, 2};
 
 	int groundLevel;
 	void groundCollision();
@@ -36,12 +40,11 @@ public:
 	sf::Texture swordTexture;
 	sf::Sprite swordSprite;
 
-	void shootMissle(sf::Sprite& projectile);
-	sf::Sprite missle;
-	sf::Texture missleTexture;
+	void shootMissle(sf::Sprite& projectile, sf::RenderWindow& window);
 	bool isShot;
 	bool isAvalible;
-;
+	sf::Vector2f targetPosition;
+
 	bool attack(sf::RenderWindow& window);
 	int angle;
 	bool isAttacking;
@@ -59,7 +62,25 @@ public:
 		attack(window); 
 		if(isAttacking)
 		window.draw(swordSprite);
-		if (isShot) {
+	}
+
+	int hitBoss(sf::Sprite& sprt) override {
+		if (shotMissle.spritesIntersect(missle.sprite, sprt) && isShot) {
+			isAvalible = true;
+			isShot = false;
+			return 5;
 		}
+	}
+	int hitBossMelee(sf::Sprite & sprt) override {
+			if (swordSwing.spritesIntersect(swordSprite, sprt) && isAttacking) {
+				return 2;
+			}
+		else return 0;
+	}
+	int hitByBoss(sf::Sprite& sprt) override {
+		if (swordSwing.spritesIntersect(sprite, sprt) ) {
+			return 2;
+		}
+		else return 0;
 	}
 };

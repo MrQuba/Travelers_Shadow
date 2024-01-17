@@ -1,5 +1,5 @@
 #include "../classes/player.hpp"
-
+#include <cmath>
 void Player::flipSprite(sf::RenderWindow& window) {
 	directionOld = input.direction;
 	velocity = input.movementManager(1, this->sprite, window);
@@ -35,13 +35,36 @@ void Player::createSword() {
 	swordSprite.setOrigin(sf::Vector2f(0, swordSprite.getLocalBounds().height));
 }
 
-void Player::shootMissle(sf::Sprite& projectile) {
+void Player::shootMissle(sf::Sprite& projectile, sf::RenderWindow& window) {
+	sf::Vector2f direction;
+	float speed = 5.f;
+
 	if (isShot) {
-		shape.move(-1.f, 0.f);
-		window.draw(shape);
+		if (isAvalible) {
+			projectile.setPosition(sprite.getPosition());
+			isAvalible = false;
+			targetPosition = window.mapPixelToCoords(sf::Mouse::getPosition(window));
+
+		}
+
+		if (shotMissle.collidesWithBorder(projectile, 0, true) ||
+			shotMissle.collidesWithBorder(projectile, 1280, false) ||
+			projectile.getPosition().y == 0 ||
+			projectile.getPosition().y == window.getSize().y) {
+			isShot = false;
+			isAvalible = true;
+		}
+		direction = targetPosition - sprite.getPosition();
+		float length = std::sqrt(direction.x * direction.x + direction.y * direction.y);
+		if (length != 0) {
+			direction /= length;
+		}
+		projectile.move(direction * speed);
+
 	}
 	else {
-		isShot = true;
+
+		projectile.setPosition(-1000, -1000);
 	}
 }
 
@@ -50,24 +73,25 @@ bool Player::attack(sf::RenderWindow& window) {
 		isAttacking = true;
 		return true;
 	}
-	else if (sf::Mouse::isButtonPressed(sf::Mouse::Right)) shootMissle()''
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Right) && isAvalible) isShot = true;
+	shootMissle(missle.sprite, window);
 	if (isAttacking) {
 		swordSprite.setPosition(sprite.getPosition().x, sprite.getPosition().y);
 		std::cout << angle << std::endl;
 		if (angle > 120) {
 			angle = 0;
 			if (input.direction == input.Left)
-			swordSprite.setRotation(-270);
-			else 
-			swordSprite.setRotation(270);
+				swordSprite.setRotation(-270);
+			else
+				swordSprite.setRotation(270);
 			isAttacking = false;
 			return false;
 		}
 		else {
-			if(input.direction == input.Left) swordSprite.setRotation(-angle);
+			if (input.direction == input.Left) swordSprite.setRotation(-angle);
 			else swordSprite.setRotation(angle);
 			angle += 1;
 		}
-
+		if (isShot) window.draw(missle.sprite);
 	}
 }
