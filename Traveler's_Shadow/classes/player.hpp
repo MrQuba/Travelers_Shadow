@@ -4,7 +4,7 @@ public:
 	Player(std::string pathToTexture = "", int startX = 0, int startY = 0, int sizeX = 0, int sizeY = 0, const int scale = 1) : Entity(pathToTexture, startX, startY, sizeX, sizeY, scale) {
 		this->jumpHeight = 600;
 		groundLevel = 650;
-		health = 255;
+		health = maxHealth;
 		directionOld = input.Left;
 		sprite.setOrigin(sprite.getLocalBounds().width / 2, sprite.getLocalBounds().height / 2);
 
@@ -12,10 +12,12 @@ public:
 		angle = 0;
 		createSword();
 
-
+		playerHealthBarHeight = 24;
 
 		isShot = false;
 		isAvalible = true;
+
+		create = true;
 
 	}
 	Math calculate;
@@ -25,6 +27,7 @@ public:
 	Input input;
 	Animation animation{ 25 ,"assets/graphics/entities/playerSprite.png" , 16, 16, 0, 0 };
 	Entity missle{"assets/graphics/entities/playerProjectile.png", 0, 0, 16, 16, 2};
+	HealthBars playerHealth{ health, playerHealthBarHeight, 1, 1, sf::Color::Red, sf::Color::Black };
 
 	int groundLevel;
 	void groundCollision();
@@ -49,7 +52,22 @@ public:
 	int angle;
 	bool isAttacking;
 
+	int playerHealthBarHeight;
+
+	bool create;
+	const int maxHealth = 200;
 	void specificUpdate(sf::RenderWindow& window) override {
+		if (0 == health) isAlive = false;
+		float setHealthBarPosition = window.getSize().x - health;
+
+		playerHealth.Bar.setSize(sf::Vector2f(health, playerHealthBarHeight));
+		playerHealth.BarBackground.setSize(sf::Vector2f(maxHealth, playerHealthBarHeight));
+		if (create) {
+			create = false;
+			playerHealth.BarBackground.setPosition(sf::Vector2f(setHealthBarPosition / 2, playerHealthBarHeight));
+			playerHealth.Bar.setPosition(sf::Vector2f(setHealthBarPosition / 2, playerHealthBarHeight));
+		}
+
 		flipSprite(window);
 
 		if (this->velocity.y >= 72) this->velocity.y = 72;
@@ -60,8 +78,12 @@ public:
 
 		isMoving();
 		attack(window); 
+
 		if(isAttacking)
 		window.draw(swordSprite);
+
+		window.draw(playerHealth.BarBackground);
+		window.draw(playerHealth.Bar);
 	}
 
 	int hitBoss(sf::Sprite& sprt) override {

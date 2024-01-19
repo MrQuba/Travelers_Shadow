@@ -44,6 +44,8 @@ public:
 		window.draw(bossHealth.Bar);
 	}
 private:
+	int groundLevel;
+
 	int bossHealthBarHeight;
 	const int maxHealth = 1500;
 
