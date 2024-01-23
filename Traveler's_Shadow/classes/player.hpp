@@ -1,7 +1,7 @@
 #include "entity.hpp"
 class Player : public Entity {
 public:
-	Player(std::string pathToTexture = "", int startX = 0, int startY = 0, int sizeX = 0, int sizeY = 0, const int scale = 1) : Entity(pathToTexture, startX, startY, sizeX, sizeY, scale) {
+	Player(std::string pathToTexture = "assets/graphics/entities/playerSprite.png", int startX = 0, int startY = 0, int sizeX = 0, int sizeY = 0, const int scale = 1) : Entity(pathToTexture, startX, startY, sizeX, sizeY, scale) {
 		this->jumpHeight = 600;
 		groundLevel = 650;
 		health = maxHealth;
@@ -55,8 +55,8 @@ public:
 	int playerHealthBarHeight;
 
 	bool create;
-	const int maxHealth = 200;
-	void specificUpdate(sf::RenderWindow& window) override {
+	const int maxHealth = 150;
+	bool specificUpdate(sf::RenderWindow& window) override {
 		if (0 == health) isAlive = false;
 		float setHealthBarPosition = window.getSize().x - health;
 
@@ -78,30 +78,38 @@ public:
 
 		isMoving();
 		attack(window); 
+		invinvibilityFrames();
 
 		if(isAttacking)
 		window.draw(swordSprite);
 
-		window.draw(playerHealth.BarBackground);
-		window.draw(playerHealth.Bar);
+		if (currentSector == isInBossRoom) {
+			window.draw(playerHealth.BarBackground);
+			window.draw(playerHealth.Bar);
+		}
+		return true;
 	}
 
-	int hitBoss(sf::Sprite& sprt) override {
-		if (shotMissle.spritesIntersect(missle.sprite, sprt) && isShot) {
+	int hitBoss(sf::Sprite& sprt, bool isBossHit, bool& bossGotHit) override {
+		if (shotMissle.spritesIntersect(missle.sprite, sprt) && isShot && !isBossHit) {
+			bossGotHit = true;
 			isAvalible = true;
 			isShot = false;
-			return 5;
+			return 15;
 		}
+		else return 0;
 	}
-	int hitBossMelee(sf::Sprite & sprt) override {
-			if (swordSwing.spritesIntersect(swordSprite, sprt) && isAttacking) {
-				return 2;
+	int hitBossMelee(sf::Sprite & sprt, bool isBossHit, bool& bossGotHit) override {
+			if (swordSwing.spritesIntersect(swordSprite, sprt) && isAttacking && !isBossHit) {
+				bossGotHit = true;
+				return 5;
 			}
 		else return 0;
 	}
 	int hitByBoss(sf::Sprite& sprt) override {
-		if (swordSwing.spritesIntersect(sprite, sprt) ) {
-			return 2;
+		if (swordSwing.spritesIntersect(sprite, sprt) && !isHit) {
+			gotHit = true;
+			return 10;
 		}
 		else return 0;
 	}

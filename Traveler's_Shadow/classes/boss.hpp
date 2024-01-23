@@ -5,7 +5,7 @@ class Boss : public Entity {
 public:
 	bool isAlive;
 	Boss(std::string pathToTexture, int startX, int startY, int sizeX, int sizeY, const int scale) : Entity(pathToTexture, startX, startY, sizeX, sizeY, scale) {
-		speed = 125;
+		speed = 1.25f;
 		health = maxHealth;
 		isMovingLeft = true;
 		angle = 1;
@@ -24,11 +24,14 @@ public:
 		}
 
 	}
-	void specificUpdate(sf::RenderWindow& window) override {
-		float setHealthBarPosition = window.getSize().x - health / 5;
+	bool specificUpdate(sf::RenderWindow& window) override {
 
-		bossHealth.Bar.setSize(sf::Vector2f(health / 5, bossHealthBarHeight));
-		bossHealth.BarBackground.setSize(sf::Vector2f(maxHealth / 5, bossHealthBarHeight));
+		if (health <= health / 2) speed *= 4;
+
+		float setHealthBarPosition = window.getSize().x - health;
+
+		bossHealth.Bar.setSize(sf::Vector2f(health, bossHealthBarHeight));
+		bossHealth.BarBackground.setSize(sf::Vector2f(maxHealth, bossHealthBarHeight));
 		if (create) {
 			create = false;
 			bossHealth.BarBackground.setPosition(sf::Vector2f(setHealthBarPosition / 2, window.getSize().y - bossHealthBarHeight));
@@ -39,15 +42,18 @@ public:
 
 		spins = true;
 		bossSpins(window);
+		invinvibilityFrames();
+
 
 		window.draw(bossHealth.BarBackground);
 		window.draw(bossHealth.Bar);
+		return true;
 	}
 private:
 	int groundLevel;
 
 	int bossHealthBarHeight;
-	const int maxHealth = 1500;
+	const int maxHealth = 750;
 
 	bool isMovingLeft;
 	float speed;
@@ -68,11 +74,11 @@ private:
 	void bossMove(sf::RenderWindow& window, sf::Sprite& sprite) {
 		srand(time(NULL));
 		if (isMovingLeft) {
-			sprite.move(-1.25f, 0);
+			sprite.move(-speed, 0);
 			if (boss.collidesWithBorder(sprite, sprite.getLocalBounds().width * sprite.getScale().x, true)) isMovingLeft = false;
 		}
 		else {
-			sprite.move(1.25f, 0);
+			sprite.move(speed, 0);
 			if (boss.collidesWithBorder(sprite, window.getSize().x - (sprite.getLocalBounds().width * sprite.getScale().x), true)) isMovingLeft = true;
 		}
 		if (currentDelay > 0) currentDelay--;

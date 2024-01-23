@@ -3,7 +3,6 @@
 class Window {
 public:
 	Window(int sizeX, int sizeY, std::string title) {
-		std::cout << "Created Window Object" << std::endl;
 		window.create(sf::VideoMode(sizeX, sizeY), title);
 	}
 	~Window() {

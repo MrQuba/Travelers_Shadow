@@ -49,8 +49,8 @@ void Player::shootMissle(sf::Sprite& projectile, sf::RenderWindow& window) {
 
 		if (shotMissle.collidesWithBorder(projectile, 0, true) ||
 			shotMissle.collidesWithBorder(projectile, 1280, false) ||
-			projectile.getPosition().y == 0 ||
-			projectile.getPosition().y == window.getSize().y) {
+			projectile.getPosition().y <= 0 ||
+			projectile.getPosition().y >= window.getSize().y) {
 			isShot = false;
 			isAvalible = true;
 		}
@@ -77,7 +77,6 @@ bool Player::attack(sf::RenderWindow& window) {
 	shootMissle(missle.sprite, window);
 	if (isAttacking) {
 		swordSprite.setPosition(sprite.getPosition().x, sprite.getPosition().y);
-		std::cout << angle << std::endl;
 		if (angle > 120) {
 			angle = 0;
 			if (input.direction == input.Left)
@@ -92,6 +91,6 @@ bool Player::attack(sf::RenderWindow& window) {
 			else swordSprite.setRotation(angle);
 			angle += 1;
 		}
-		if (isShot) window.draw(missle.sprite);
 	}
+	if (isShot) window.draw(missle.sprite);
 }

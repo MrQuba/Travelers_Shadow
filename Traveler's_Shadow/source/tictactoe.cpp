@@ -2,6 +2,8 @@
 #include <iostream>
 #include <cmath>
 #include <ctime>
+bool startLoop = false;
+int temp = 0;
 void TicTacToe::draw(sf::RenderWindow& window) {
 	for (int i = 0; i < amountOfSquares; i++) window.draw(square[i]);
 }
@@ -138,19 +140,14 @@ void TicTacToe::play(sf::RenderWindow& window, bool& w) {
 	draw(window);
 	bool restart = false;
 	if(hasPlayerWon) w = false;
-	int temp = 0;
-	if (hasPlayerLost) {
-		temp++;
-		window.draw(exitText);
-	}
-	bool startLoop = false;
-	if (temp == 2) startLoop = true;
+	if (temp == 1) startLoop = true;
 	while (hasPlayerLost && startLoop) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::R)) {
 			hasPlayerLost = false;
 			hasAnyoneWon = false;
 			restart = true;
 			temp = 0;
+			startLoop = false;
 		}
 
 	}
@@ -160,5 +157,8 @@ void TicTacToe::play(sf::RenderWindow& window, bool& w) {
 			squareState[i] = isEmpty;
 			square[i].setFillColor(sf::Color::Green);
 		}
+	}if (hasPlayerLost) {
+		temp++;
+		window.draw(exitText);
 	}
 }

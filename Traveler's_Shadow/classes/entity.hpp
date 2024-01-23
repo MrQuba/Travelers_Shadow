@@ -22,6 +22,9 @@ public:
 		this->jumpHeight = 1;
 		isAlive = true;
 		currentSector = isInStartingRoom;
+		currentInvincibilityFrames = 0;
+		isHit = false;
+		gotHit = false;
 	}
 		~Entity(){}
 
@@ -33,19 +36,33 @@ public:
 
 	bool isAlive;
 
+	bool isHit;
+	bool gotHit;
+	const int maxInvincibilityFrames = 96;
+	int currentInvincibilityFrames;
+
+	void invinvibilityFrames() {
+		if (0 == currentInvincibilityFrames) isHit = false;
+		if (gotHit && !isHit) {
+			gotHit = false;
+			currentInvincibilityFrames = maxInvincibilityFrames;
+			isHit = true;
+		}
+		if (isHit) {
+			currentInvincibilityFrames--;
+		}
+	}
+
 	int currentSector;
 
 	sf::Vector2f velocity;
-	virtual int hitBoss(sf::Sprite& sprt) {
-		std::cout << "to override";
+	virtual int hitBoss(sf::Sprite& sprt, bool isBossHit, bool& bossGotHit) {
 			return 0;
 	}
-	virtual int hitBossMelee(sf::Sprite& sprt) {
-		std::cout << "to override";
+	virtual int hitBossMelee(sf::Sprite& sprt, bool isBossHit, bool& bossGotHit) {
 		return 0;
 	}
 	virtual int hitByBoss(sf::Sprite& sprt) {
-		std::cout << "to override";
 		return 0;
 	}
 	bool update(sf::RenderWindow& window) {
@@ -56,7 +73,7 @@ public:
 		window.draw(this->sprite);
 		return true;
 	}
-	virtual void specificUpdate(sf::RenderWindow& window) {
-		std::cout << "entity" << std::endl;
+	virtual bool specificUpdate(sf::RenderWindow& window) {
+		return false;
 	}
 };
